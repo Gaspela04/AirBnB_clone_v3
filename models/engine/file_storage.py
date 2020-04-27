@@ -71,7 +71,7 @@ class FileStorage:
             return self.all(cls).get(cls + '.' + id)
 
     def count(self, cls=None):
-        """  """
+        """ Return number objs in strg depend match of class name """
         if cls:
             return len(self.all(cls))
         else:
