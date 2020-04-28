@@ -17,9 +17,8 @@ def strg_close(x):
 
 
 @app.errorhandler(404)
-def not_found(self):
-    """404 error"""
-    return jsonify({"error": "Not found"})
+def not_found(error):
+    return jsonify({"error": "Not found"}), 404
 
 
 if __name__ == "__main__":
