@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """ Rest API """
+from flask import Flask, request
 from flask import Flask, jsonify, abort, request
 from api.v1.views import app_views
 from models import storage
