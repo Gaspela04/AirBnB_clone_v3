@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 """ Rest API """
-from flask import Flask, request
 from flask import Flask, jsonify, abort, request
 from api.v1.views import app_views
 from models import storage
@@ -11,8 +10,8 @@ from models.state import State
 def all_states():
     """ Return all states """
     all_state = []
-    for v in storage.all('State').values():
-        all_state.append(v.to_dict())
+    for my_state in storage.all('State').values():
+        all_state.append(my_state.to_dict())
     return jsonify(all_state), 200
 
 
