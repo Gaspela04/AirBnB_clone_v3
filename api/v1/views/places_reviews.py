@@ -9,7 +9,7 @@ from models.review import Review
 
 @app_views.route('/places/<place_id>/reviews',
                  methods=['GET'], strict_slashes=False)
-def get_reviews(place_id):
+def all_reviews(place_id):
     """ Return reviews for ID places """
     all_reviews = storage.get("Place", place_id)
     if all_reviews:
