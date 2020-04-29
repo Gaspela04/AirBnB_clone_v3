@@ -1,11 +1,13 @@
 #!/usr/bin/python3
 """Api hbnb"""
-from api.v1.views import app_views
 from models import storage
-from flask import Flask
-from flask import Flask, Blueprint, jsonify
+from flask import Flask, jsonify
+from flask_cors import CORS
+from api.v1.views import app_views
+from os import getenv
 
 app = Flask(__name__)
+cors = CORS(app, resources={r"/*": {"origins": "0.0.0.0"}})
 app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
 app.register_blueprint(app_views)
 
@@ -18,6 +20,7 @@ def strg_close(x):
 
 @app.errorhandler(404)
 def not_found(error):
+    """ Error 404 """
     return jsonify({"error": "Not found"}), 404
 
 
