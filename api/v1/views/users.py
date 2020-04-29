@@ -21,14 +21,14 @@ def get_users(user_id):
     """ Return users for ID"""
     my_user = storage.get("User", user_id)
     if my_user:
-        return jsonify(my_user.to_dict())
+        return jsonify(my_user.to_dict()), 200
     else:
         abort(404)
 
 
 @app_views.route('/users/<user_id>',
                  methods=['DELETE'], strict_slashes=False)
-def delete_users(amenuser_idity_id):
+def delete_users(user_id):
     """ Delete users for ID """
     my_users = storage.get("User", user_id)
     if my_users:
