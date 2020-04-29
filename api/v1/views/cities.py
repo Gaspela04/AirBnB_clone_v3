@@ -6,6 +6,7 @@ from models import storage
 from models.city import City
 
 
+
 @app_views.route('/cities', methods=['GET'], strict_slashes=False)
 def all_cities():
     """ Return all cities """
@@ -66,6 +67,7 @@ def post_cities(state_id):
         setattr(city, 'state_id', state_id)
         storage.new(city)
         storage.save()
+        storage.close()
         return jsonify(city.to_dict()), 201
 
 
@@ -87,4 +89,5 @@ def put_city(city_id):
                     continue
                 setattr(upt_cities, attr, my_cities[attr])
             storage.save()
+            storage.close()
             return jsonify(upt_cities.to_dict()), 200
