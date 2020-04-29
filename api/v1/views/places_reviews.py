@@ -11,14 +11,14 @@ from models.review import Review
                  methods=['GET'], strict_slashes=False)
 def all_reviews(place_id):
     """ Return reviews for ID places """
-    data = []
     all_reviews = storage.get("Place", place_id)
     if not all_reviews:
         abort(404)
-    for obj in storage.all(Review).values():
-        if obj.place_id == place_id:
-            data.append(obj.to_dict())
-    return jsonify(itedatams)
+    else:
+        review_list = []
+        for review in all_reviews.reviews:
+            review_list.append(review.to_dict())
+    return jsonify(review_list), 200
 
 
 @app_views.route('/reviews/<review_id>',
