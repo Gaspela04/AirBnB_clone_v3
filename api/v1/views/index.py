@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """index file"""
-from flask import jsonify
+from flask import Flask
 from api.v1.views import app_views
 import json
 from models import storage
@@ -15,4 +15,9 @@ def status():
 @app_views.route('/stats', methods=['GET'])
 def stats():
     """ retrieve the number of each object by type """
-    return jsonify(states=storage.count(State))
+    return {"amenities": storage.count('Amenity'),
+            "cities": storage.count('City'),
+            "places": storage.count('Place'),
+            "reviews": storage.count('Review'),
+            "states": storage.count('State'),
+            "users": storage.count('User')}

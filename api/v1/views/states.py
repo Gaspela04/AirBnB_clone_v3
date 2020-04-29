@@ -11,7 +11,7 @@ from models.state import State
 def all_states():
     """ Return all states """
     all_state = []
-    for my_state in storage.all(State).values():
+    for my_state in storage.all("State").values():
         all_state.append(my_state.to_dict())
     return jsonify(all_state)
 

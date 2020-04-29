@@ -72,10 +72,7 @@ class FileStorage:
 
     def count(self, cls=None):
         """ Return number objs in strg depend match of class name """
-        if cls:
-            return len(self.all(cls))
-        else:
-            return len(self.all())
+        return len(self.all(cls))
 
     def close(self):
         """call reload() method for deserializing the JSON file to objects"""
