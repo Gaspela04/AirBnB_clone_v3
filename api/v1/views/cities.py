@@ -40,7 +40,7 @@ def cities_list_id(city_id):
 
 @app_views.route('/cities/<city_id>',
                  methods=['DELETE'], strict_slashes=False)
-def cities_remove(city_id):
+def delete_cities(city_id):
     """ Delete cities for ID """
     my_cities = storage.get('City', city_id)
     if my_cities:
