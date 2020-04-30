@@ -2,14 +2,13 @@
 """index file"""
 from flask import Flask
 from api.v1.views import app_views
-import json
 from models import storage
 
 
-@app_views.route('/status')
+@app_views.route('/api/v1/status', strict_slashes=False)
 def status():
-    """ Return status OK """
-    return jsonify({"status": "OK"})
+    """ return a JSON """
+    return {"status": "OK"}
 
 
 @app_views.route('/stats', methods=['GET'])
