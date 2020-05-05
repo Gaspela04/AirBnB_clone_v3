@@ -128,7 +128,7 @@ class TestFileStorage(unittest.TestCase):
         """Check if count return number of objects in dbstorage based in id"""
         self.assertIs(type(models.storage.count()), int)
         first = models.storage.count(City)
-        new_city = State(name='Tangamandapio')
+        new_city = City(name='Tangamandapio')
         models.storage.new(new_city)
         models.storage.save()
         second = models.storage.count(City)

@@ -68,6 +68,8 @@ class FileStorage:
     def get(self, cls, id):
         """ Return name, id  """
         if self.all(cls) is not None:
+            if not isinstance(cls, str):
+                return self.all(cls).get(cls.__name__ + '.' + id)
             return self.all(cls).get(cls + '.' + id)
 
     def count(self, cls=None):
