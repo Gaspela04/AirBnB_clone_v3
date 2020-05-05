@@ -11,7 +11,7 @@ def status():
     return {"status": "OK"}
 
 
-@app_views.route('/stats', methods=['GET'])
+@app_views.route('/stats', methods=['GET'], strict_slashes=False)
 def stats():
     """ retrieve the number of each object by type """
     return {"amenities": storage.count('Amenity'),
